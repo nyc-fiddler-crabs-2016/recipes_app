@@ -1,4 +1,7 @@
-<% if @errors %>
-  <% @errors.each do |error| %>
-    <%= error %>
-<% end %>
+<div id="errors">
+  <% if @errors %>
+    <% @errors.each do |error| %>
+      <%= error %>
+    <% end %>
+  <% end %>
+</div>
