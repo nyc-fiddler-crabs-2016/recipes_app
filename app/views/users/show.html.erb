@@ -1,10 +1,12 @@
-<%= @user.username %>'s Page
+<%= link_to "Home", root_path %>
 
-<%= @user.username %>'s Recipes
+<h3><%= @user.username %>'s Page</h3>
+
+<p><%= @user.username %>'s Saved Recipes<p>
 
 <% if @user.recipes.any? %>
   <% @user.recipes.each do |recipe| %>
-    <%= link_to recipe.name, recipe_path(recipe) %>
+    <p><%= link_to recipe.name, recipe_path(recipe) %></p>
   <% end %>
 <% end %>
 

@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :user_recipes
   has_many :recipes, through: :user_recipes
+  has_many :created_recipes, foreign_key: "creator_id", class_name: "Recipe"
 
   has_secure_password
 end

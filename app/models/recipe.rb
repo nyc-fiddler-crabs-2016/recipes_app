@@ -5,4 +5,10 @@ class Recipe < ActiveRecord::Base
   has_many :users, through: :user_recipes
   has_many :recipe_ingredients
   has_many :ingredients, through: :recipe_ingredients
+
+  belongs_to :creator, class_name: "User"
+
+  def identify
+    "id: recipe-link-#{self.id}"
+  end
 end

@@ -46,9 +46,12 @@ ActiveRecord::Schema.define(version: 20160324184127) do
     t.string   "name",        null: false
     t.string   "category"
     t.string   "description"
+    t.integer  "creator_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  add_index "recipes", ["creator_id"], name: "index_recipes_on_creator_id", using: :btree
 
   create_table "user_recipes", force: :cascade do |t|
     t.integer  "recipe_id"

@@ -1,0 +1,33 @@
+<%= form_for @ingredient do |f| %>
+
+<fieldset>
+  <legend>Enter your details</legend>
+  <div>
+    <%= f.label_tag :name, autofocus: true%>
+    <%= f.text_field_tag :name %>
+  </div>
+
+  <div>
+    <%= f.label_tag :description %>
+    <%= f.text_field :description %>
+  </div>
+
+   <div>
+    <%= f.label_tag :category %>
+    <%= f.text_field_tag :category %>
+  </div>
+
+  <div>
+    <%= f.submit_tag 'List Ingredient' %>
+  </div>
+</fieldset>
+<% end %>
+
+
+       calories
+       fat
+        protein
+         Carbohydrates
+         fiber
+         sugars
+         water
