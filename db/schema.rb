@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 20160324150512) do
   enable_extension "plpgsql"
 
   create_table "ingredients", force: :cascade do |t|
-    t.string   "name"
-    t.string   "type"
+    t.string   "name",       null: false
+    t.string   "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20160324150512) do
   add_index "recipe_ingredients", ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id", using: :btree
 
   create_table "recipes", force: :cascade do |t|
-    t.string   "name"
-    t.string   "type"
+    t.string   "name",        null: false
+    t.string   "category"
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
