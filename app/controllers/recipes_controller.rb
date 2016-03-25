@@ -11,10 +11,10 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params.merge(creator_id: current_user))
     if @recipe.save
-      flash[:notice] = "Recipe Added"
+      flash[:alert] = ["Recipe Added"] #I don't get why this is an issue but the same type of syntax in the userrecipe controller works fine. '''<%= flash[:alert].join("<br>") if flash[:alert] %>'''| '''undefined method `join' for "Recipe Added":String'''
       redirect_to root_path
     else
-      flash[:notice] = "whoops. please try again"
+      flash[:now] = ["whoops. please try again"]
       render 'new'
     end
   end

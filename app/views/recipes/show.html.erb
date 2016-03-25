@@ -5,6 +5,8 @@
 <p>Ingredients:</p>
 <ol>
   <% @recipe.ingredients.each do |ingredient| %>
-    <li><%= ingredient.name %></li>
+    <li><%= link_to ingredient.name, ingredient_path(ingredient), id: "ingredient-link-#{ingredient.id}" %>
+      </li>
   <% end %>
 </ol>
+

@@ -1,0 +1,15 @@
+formerly of the _flash partial.
+
+<%= flash[:notice].join("<br>") if flash[:notice] %>
+<%= flash[:alert].join("<br>") if flash[:alert] %>
+<%= flash[:now].join("<br>") if flash[:now] %>
+
+
+which worked fine for the UserRecipes controller create and  actions but breaks in the recipes controller create action. damned if I get why?
+
+#recipes_controller
+#I don't get why this is an issue but the same type of syntax in the userrecipe controller works fine. '''<%= flash[:alert].join("<br>") if flash[:alert] %>'''| '''undefined method `join' for "Recipe Added":String'''
+
+then again - I just replaced those three silly if statements above with the exact three measly lines of code in the rails guide and lo and behold it works excellently so far.
+
+so Iam confused as to how it could be easier, as a mentor told me there was an even easier way which I should google.? could it get easier than those three tiny lines which rails guide spells out explicitly for us already? time will tell.

@@ -1,0 +1,9 @@
+<% if @ingredients %>
+ <% @ingredients.each do |ingredient| %>
+    <p><%= link_to ingredient.name, ingredient_path(ingredient), id: "ingredient-link-#{ingredient.id}" %>
+      <%= link_to "(+)", recipe_ingredients_path(id: ingredient.id), method: :post %> </p>
+  <% end %>
+<% end %>
+
+
+<%= link_to "List a new ingredient", new_ingredient_path, id: "new-ingredient-link" %>
