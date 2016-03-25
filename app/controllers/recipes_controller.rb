@@ -19,10 +19,18 @@ class RecipesController < ApplicationController
     end
   end
 
-  def add
-    @recipe = Recipe.find(params[:id])
-    current_user.recipes << @recipe
-  end
+# These routes are certianly not restful.
+  # def add
+  #   recipe = Recipe.find(params[:id])
+  #   current_user.recipes << recipe
+  #   redirect_to user_path(current_user)
+  # end
+
+  # def remove
+  #   recipe = Recipe.find(params[:id])
+  #   current_user.recipes.delete(recipe)
+  #   redirect_to user_path(current_user)
+  # end
 
   def show
     @recipe = Recipe.find(params[:id])

@@ -6,7 +6,13 @@
 
 <% if @user.recipes.any? %>
   <% @user.recipes.each do |recipe| %>
-    <p><%= link_to recipe.name, recipe_path(recipe) %></p>
+    <div id="user-saved-recipe"<%= recipe.id %>>
+      <p><%= link_to recipe.name, recipe_path(recipe) %>
+        <% if current_user == @user%>
+          <%= link_to "(-)", user_recipe_path(id: recipe.id), method: :delete %>
+        <% end %>
+      </p>
+    </div>
   <% end %>
 <% end %>
 

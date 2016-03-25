@@ -3,13 +3,15 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resources :users, except: [:index]
 
-  resources :recipes do
-    member do
-      get 'add'
-    end
-  end
+  # resources :recipes do
+  #   member do
+  #     get 'add'
+  #     get 'remove'
+  #   end
+  # end
   resources :recipes
   resources :ingredients
+  resources :user_recipes, only: [:create, :destroy]
 
   root 'recipes#index'
 

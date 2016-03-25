@@ -8,7 +8,4 @@ class Recipe < ActiveRecord::Base
 
   belongs_to :creator, class_name: "User"
 
-  def identify
-    "id: recipe-link-#{self.id}"
-  end
 end
