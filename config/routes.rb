@@ -1,21 +1,13 @@
 Rails.application.routes.draw do
 
+  root 'recipes#index'
   resource :session, only: [:new, :create, :destroy]
   resources :users, except: [:index]
-
-  # resources :recipes do
-  #   member do
-  #     get 'add'
-  #     get 'remove'
-  #   end
-  # end
-
   resources :recipes
   resources :ingredients
   resources :user_recipes, only: [:create, :show, :update, :destroy]
   resources :recipe_ingredients, only: [:create, :destroy]
 
-  root 'recipes#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
