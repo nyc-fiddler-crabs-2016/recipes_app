@@ -1,7 +1,7 @@
 class CreateRecipes < ActiveRecord::Migration
   def change
     create_table :recipes do |t|
-      t.string :name, null: false
+      t.string :name
       t.string :category
       t.string :description
       t.integer :creator_id, index: true, foreign_key: true

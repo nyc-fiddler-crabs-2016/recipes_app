@@ -17,7 +17,7 @@ class RecipeIngredientsController < ApplicationController
   end
 
   def destroy
-     @recipe = Recipe.find(params[:id])
+    recipe = Recipe.find(params[:id])
     recipe_ingredient = UserRecipe.find_by(user_id: current_user.id, recipe_id: params[:id])
     recipe_ingredient.destroy
     if request.xhr?
