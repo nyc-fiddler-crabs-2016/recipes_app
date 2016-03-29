@@ -77,10 +77,22 @@ RecipeIngredient.create(recipe_id: 3, ingredient_id: 21)
 RecipeIngredient.create(recipe_id: 3, ingredient_id: 29)
 
 
-UserRecipe.create(recipe_id: 1, user_id: 1)
-UserRecipe.create(recipe_id: 2, user_id: 1)
-UserRecipe.create(recipe_id: 2, user_id: 2)
-UserRecipe.create(recipe_id: 3, user_id: 2)
+SavedRecipe.create(user_id: 1, name: "Cuban Black Bean Soup", category: "soup", description: "savory")
+SavedRecipe.create(user_id: 1, name: "Banana Bread", category: "cake", description: "sweet")
+SavedRecipe.create(user_id: 2, name: "Black Beans and Rice", category: "rice", description: "savory")
+SavedRecipe.create(user_id: 2, name: "Chicken Soup", category: "soup", description: "savory")
 
+
+SavedRecipeIngredient.create(saved_recipe_id: 1, ingredient_id: 3)
+SavedRecipeIngredient.create(saved_recipe_id: 1, ingredient_id: 4)
+SavedRecipeIngredient.create(saved_recipe_id: 1, ingredient_id: 5)
+SavedRecipeIngredient.create(saved_recipe_id: 1, ingredient_id: 6)
+SavedRecipeIngredient.create(saved_recipe_id: 1, ingredient_id: 8)
+SavedRecipeIngredient.create(saved_recipe_id: 1, ingredient_id: 16)
+SavedRecipeIngredient.create(saved_recipe_id: 1, ingredient_id: 19)
+SavedRecipeIngredient.create(saved_recipe_id: 1, ingredient_id: 20)
+SavedRecipeIngredient.create(saved_recipe_id: 1, ingredient_id: 21)
+SavedRecipeIngredient.create(saved_recipe_id: 1, ingredient_id: 25)
+SavedRecipeIngredient.create(saved_recipe_id: 1, ingredient_id: 29)
 
 

@@ -1,14 +1,14 @@
 class SavedRecipesController < ApplicationController
 
   def create
-    @user = current_user
-    @recipe = SavedRecipe.new(id: params[:id])
-    if @recipe.save
+    source_recipe_id = params[:format]
+    copy_recipe(source_recipe_id)
+    if @saved_recipe.save
       if request.xhr?
         render '_add_recipe.html.erb', layout: false
       else
-        flash[:alert] = ["Added #{@recipe.name} to your saved recipes. "]
-        redirect_to path(@user)
+        flash[:alert] = ["Added #{@saved_recipe.name} to your saved recipes. "]
+        redirect_to user_path(@user)
       end
     else
        flash[:now] = ["There was a problem. Please look into it. "]
@@ -17,20 +17,20 @@ class SavedRecipesController < ApplicationController
   end
 
   def show
-    @recipe = SavedRecipe.find_by(id: params[:id])
+    @saved_recipe = SavedRecipe.find_by(id: params[:id])
   end
 
   def edit
-    @recipe = SavedRecipe.find_by(id: params[:id])
-	authorize_access(@recipe)
+    @saved_recipe = SavedRecipe.find_by(id: params[:id])
+	  authorize_access(@saved_recipe)
   end
 
   def update
     @ingredient = Ingredient.find_by(id: params[:ingredient_id])
-    @recipe = SavedRecipe.find_by(id: params[:id])
-	authorize_access(@recipe)
-    @recipe.ingredients << @ingredient
-    redirect_to recipe_path(@recipe)
+    @saved_recipe = SavedRecipe.find_by(id: params[:id])
+	  authorize_access(@saved_recipe)
+    @saved_recipe.ingredients << @ingredient
+    redirect_to recipe_path(@saved_recipe)
   end
 
   # def destroy
@@ -45,5 +45,19 @@ class SavedRecipesController < ApplicationController
   #   end
   # end
 # end
+
+  private
+
+  def source_recipe_ingredients
+    Ingredient.where()
+  end
+
+
+  def saved_recipe_params
+    params.require(:saved_recipe).permit(:current_user
+
+
+
+
 
 end
