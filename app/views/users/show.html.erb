@@ -1,0 +1,19 @@
+<%= link_to "Home", root_path %>
+
+<h3><%= @user.username %>'s Page</h3>
+
+<p><%= @user.username %>'s Saved Recipes<p>
+
+<% if @user.saved_recipes.any? %>
+  <% @user.saved_recipes.each do |recipe| %>
+    <div id="user-saved-recipe"<%= recipe.id %>>
+      <p><%= link_to recipe.name, user_recipe_path(id: recipe.id) %>
+        <% if current_user == @user%>
+          <%= link_to "(-)", user_recipe_path(id: recipe.id), method: :delete %>
+        <% end %>
+      </p>
+    </div>
+  <% end %>
+<% end %>
+
+

@@ -1,0 +1,24 @@
+<%= form_for @recipe do |f| %>
+
+<fieldset>
+  <legend>Enter your details</legend>
+  <div>
+    <%= f.label :name%>
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+   <div>
+    <%= f.label :category %>
+    <%= f.text_field :category %>
+  </div>
+
+  <div>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+
+  <div>
+    <%= f.submit 'List Recipe' %>
+  </div>
+</fieldset>
+<% end %>

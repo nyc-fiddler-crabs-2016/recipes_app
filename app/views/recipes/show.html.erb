@@ -1,0 +1,12 @@
+<%= link_to "Back", root_path %>
+
+<h3><%= @recipe.name %></h3>
+
+<p>Ingredients:</p>
+<ol>
+  <% @recipe.ingredients.each do |ingredient| %>
+    <li><%= link_to ingredient.name, ingredient_path(ingredient), id: "ingredient-link-#{ingredient.id}" %>
+      </li>
+  <% end %>
+</ol>
+
