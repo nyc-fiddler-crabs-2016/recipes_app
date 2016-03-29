@@ -1,9 +1,14 @@
-<% if @recipes %>
- <% @recipes.each do |recipe| %>
-    <p><%= link_to recipe.name, recipe_path(recipe), id: "recipe-link-#{recipe.id}" %>
-      <%= link_to "(+)", user_saved_recipes_path(current_user, recipe), method: :post %> </p>
-  <% end %>
-<% end %>
+<div id="recipe-list">
+	<% if @recipes %>
+	 <% @recipes.each do |recipe| %>
+	    <p><%= link_to recipe.name, recipe_path(recipe), class: "recipe-link", id: "recipe-link-#{recipe.id}" %>
+	      <%= link_to "(+)", user_saved_recipes_path(current_user, recipe), method: :post %> </p>
+	  <% end %>
+	<% end %>
+</div>
 
 
 <%= link_to "List a new Recipe", new_recipe_path(@recipe), id: "new-recipe-link" %>
+<div id=copy-recipe-target-box>
+Drag here to save a copy of a recipe:
+</div>
