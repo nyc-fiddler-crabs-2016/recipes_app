@@ -5,6 +5,7 @@ class CreateRecipes < ActiveRecord::Migration
       t.string :category
       t.string :description
       t.integer :creator_id, index: true, foreign_key: true
+      t.integer :user_id, index: true, foreign_key: true
 
       t.timestamps null: false
     end

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'recipes#index'
   resource :session, only: [:new, :create, :destroy]
   resources :users, except: [:index] do
-     resources :saved_recipes, except: [:index, :new]
+     resources :recipes, except: [:index, :new]
   end
   resources :recipes
   resources :ingredients
