@@ -7,13 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if current_user %>
-  <%= link_to "Log out", session_path, method: :delete %>
-<% else %>
-  <%= link_to "Register", new_user_path %>
-  <%= link_to "Login", new_session_path %>
-<% end %>
+  <nav>
+	<% if current_user %>
+	  <%= link_to "Log out", session_path, method: :delete, id: "logout-link" %>
+	<%= link_to "My Recipes", user_path(current_user) %>
+	<% else %>
+	  <%= link_to "Register", new_user_path %>
+	  <%= link_to "Login", new_session_path %>
+	<% end %>
+	
 
+	</nav>
 <%= render 'errors' %>
 <%= render 'flash'%>
 <%= yield %>

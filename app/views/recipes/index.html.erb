@@ -2,7 +2,7 @@
 	<% if @recipes %>
 	 <% @recipes.each do |recipe| %>
 	    <p><%= link_to recipe.name, recipe_path(recipe), class: "recipe-link", id: "recipe-link-#{recipe.id}" %>
-	      <%= link_to "(+)", user_saved_recipes_path(current_user, recipe), method: :post %> </p>
+	      <%= link_to "(+)", user_recipes_path(current_user, recipe), method: :post %> </p>
 	  <% end %>
 	<% end %>
 </div>
