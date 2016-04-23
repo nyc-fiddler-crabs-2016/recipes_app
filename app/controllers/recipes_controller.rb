@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params.merge(creator_id: current_user))
     if @recipe.save
-      flash[:alert] = ["Recipe Added"] #I don't get why this is an issue but the same type of syntax in the userrecipe controller works fine. '''<%= flash[:alert].join("<br>") if flash[:alert] %>'''| '''undefined method `join' for "Recipe Added":String'''
+      flash[:alert] = ["Recipe Added"] 
       redirect_to root_path
     else
       flash[:now] = ["whoops. please try again"]
@@ -26,11 +26,6 @@ class RecipesController < ApplicationController
   #   redirect_to user_path(current_user)
   # end
 
-  # def remove
-  #   recipe = Recipe.find(params[:id])
-  #   current_user.recipes.delete(recipe)
-  #   redirect_to user_path(current_user)
-  # end
 
   def show
     @recipe = Recipe.find(params[:id])
@@ -43,6 +38,9 @@ class RecipesController < ApplicationController
   end
 
   def destroy
+    recipe = Recipe.find(params[:id])
+  #   current_user.recipes.delete(recipe) if recipe.creator == current_user
+  #   redirect_to user_path(current_user)
   end
 
 private

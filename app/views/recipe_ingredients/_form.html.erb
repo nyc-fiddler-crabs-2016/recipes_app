@@ -1,0 +1,17 @@
+<%= form_for @recipe_ingredient do |f| %>
+
+  <div class='ingredient-details'>
+    <%= f.label_tag :ingredient_name, %>
+    <%= f.text_field_tag :ingredient_name %>
+  
+    <%= f.label_tag :measurement %>
+    <%= f.text_field :measurement %>
+  
+    <%= f.label_tag :amount %>
+    <%= f.text_field_tag :amount %>
+  <div>
+
+    <%= f.submit_tag 'Publish Recipe' %>
+  </div>
+
+  <% end %>

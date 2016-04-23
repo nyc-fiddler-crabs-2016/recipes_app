@@ -1,7 +1,7 @@
 <%= form_for @recipe do |f| %>
 
 <fieldset>
-  <legend>Enter your details</legend>
+  <legend>Recipe Details</legend>
   <div>
     <%= f.label :name%>
     <%= f.text_field :name, autofocus: true %>
@@ -17,8 +17,14 @@
     <%= f.text_field :description %>
   </div>
 
-  <div>
-    <%= f.submit 'List Recipe' %>
-  </div>
+
 </fieldset>
 <% end %>
+
+<!--  For the measurement type .pluralize if > 1 )
+ 
+ recipes need a column added to the migration for the instructions which should be a text area
+
+ -->
+
+

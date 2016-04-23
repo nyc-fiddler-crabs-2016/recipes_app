@@ -36,6 +36,8 @@ class IngredientsController < ApplicationController
   # end
 
   private
+
   def ingredient_params
+    params.require(:ingredient).permit(:name, :category, :water, :calories, :protein, :fats, :carbohydrates, :fiber, :sugars, :lactose)
   end
 end
