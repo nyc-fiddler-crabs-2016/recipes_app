@@ -4,14 +4,32 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :ensure_current_user, except: [:index, :show]
-  helper_method :current_user
   helper_method :logged_in?
-  helper_method :owned?
-  helper_method :authorize_access
-  helper_method :prevent_tampering
-  helper_method :build_custom_id
-  helper_method :comment_source_path
+  helper_method :current_user
+
   # Can I put all these helper methods on one line separated by commas?
+  
+  URI_BASE =  "http://api.nal.usda.gov/ndb/nutrients/?format=json&api_key="
+  API_KEY = Rails.application.secrets.usda_api
+  NUTRIENT_LIST = "&nutrients=255&nutrients=208&nutrients=203&nutrients=204&nutrients=205&nutrients=291&nutrients=269&nutrients=213"
+  CATEGORIES = {
+    "01" => "Dairy and Egg",
+    "02" => "Spices and Herbs",
+    "04" => "Fats and Oils",
+    "05" => "Poultry",
+    "06" => "Soups, Sauces, and Gravies",
+    "09" => "Fruits and Fruit Juices",
+    "11" => "Vegetables and Vegetable",
+    "12" => "Nuts and Seeds",
+    "13" => "Beef",
+    "14" => "Beverages",
+    "15" => "Fish",
+    "16" => "Legumes",
+    "18" => "Baked Goods",
+    "19" => "Sweets",
+    "20" => "Grains and Pasta",
+    "25" => "Snacks"
+     }
 
   def logged_in?
     !!current_user
@@ -19,33 +37,6 @@ class ApplicationController < ActionController::Base
 
   def current_user
     User.find_by(id: session[:user_id]) if session[:user_id]
-  end
-
-  def owned?(object)
-    logged_in? && current_user.id == object.user_id
-  end
-
-  def authorize_access(object)
-    halt 403, "you are not authorized to perform this operation" unless owned?(object)
-  end
-
-  def proved_self
-    logged_in? && session[:user_id] == @user.id
-  end
-
-  def prevent_tampering
-    halt 403, "you are not authorized to perform this operation" unless proved_self
-  end
-
-  def build_custom_id(object, direction)
-    id = "#{object.class}-" + "#{object.id}-" + direction + "vote-link"
-  end
-  def comment_source_path(comment)
-    if comment.commentable_type == "Answer"
-      question_path(comment.source.question)
-    else
-      question_path(comment.source)
-    end
   end
 
   private

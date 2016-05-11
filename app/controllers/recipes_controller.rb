@@ -6,6 +6,8 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    @ingredients = Ingredient.all
+    @categories = CATEGORIES.map {|key, name| name}
   end
 
   def create

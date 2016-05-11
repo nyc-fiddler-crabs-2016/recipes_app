@@ -1,2 +1,12 @@
-<%= render 'form' %>
+<div>	
+  <%= render 'form' %>
+</div>
+
+<% @ingredients.each do |ingredient| %>
+  <div class="ingredient" class ="#{ingredient.category}">
+	<%= ingredient.name %>
+  </div>
+<% end %>
+
+<%= select(:ingredient, :category, @categories, {include_blank: "Ingredient Categories"})%>
 
